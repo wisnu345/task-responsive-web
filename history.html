@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FnB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/stylehistory.css" />
+</head>
+
+<body>
+    <div class="container-grid " id="container">
+        <!-- header -->
+        <div class="header">
+            <a href="#" class="menubtn" onclick=""><img src="assets/icons/menu.svg" /></a>
+            <h3 class="brand-title">History</h3>
+        </div>
+        <!-- Main Page -->
+        <div class="main-page">
+            <div class="leftbar" id="sidebar">
+                <a href="index.html" class="leftbarbtn"><img src="assets/icons/fork.svg" /></a>
+                <a href="history.html" class="leftbarbtn"><img src="assets/icons/clipboard.svg" /></a>
+                <a href="#" class="leftbarbtn" onclick="add()"><img src="assets/icons/add.svg" /></a>
+            </div>
+            <div class="addmenu-box" id="addmenu-box">
+                <div class="detail-add">
+                    <h2>Add Item</h2>
+                    <div class="addform-box">
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div>
+                            <label for="name">Image</label>
+                            <input type="text" id="image">
+                        </div>
+                        <div>
+                            <label for="name">Price</label>
+                            <input type="text" id="price">
+                        </div>
+                        <div>
+                            <label for="category">Category</label>
+                            <select id="category" placeholder="Category" required>
+                                <option value="" disabled selected class="option">Category</option>
+                                <option value="#">Drink</option>
+                                <option value="#">Food</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="addbtn-area">
+                    <a href="#" class="cancelbtn" onclick="cancel()">Cancel</a>
+                    <a href="#" class="addbtn">Add</a>
+                </div>
+            </div>
+            <div class="history">
+                <div class="recap">
+                    <div class="twinbox twinbox1">
+                        <h5>Today's Income</h5>
+                        <h3>Rp. 100.000.000</h3>
+                        <p>+2% Yesterday</p>
+                    </div>
+                    <div class="twinbox twinbox2">
+                        <h5>Order</h5>
+                        <h3>3.270</h3>
+                        <p>+5% Last week</p>
+                    </div>
+                    <div class="twinbox twinbox3">
+                        <h5>This Year Income</h5>
+                        <h3>Rp. 100.000.000.000</h3>
+                        <p>+10% Last Year</p>
+                    </div>
+                </div>
+                <div class="chart-line">
+                    <h3>Revenue</h3>
+                    <select id="month" placeholder="Category" required>
+                        <option value="" disabled selected class="option">Month</option>
+                        <option value="#">January</option>
+                        <option value="#">February</option>
+                    </select>
+                    <canvas id="chart_0"></canvas>
+                </div>
+                <div class="recordertable">
+                    <h3>Revenue</h3>
+                    <select id="today" placeholder="Category" required>
+                        <option value="" disabled selected class="option">Today</option>
+                        <option value="#">Yesterday</option>
+                        <option value="#">23 August 2020</option>
+                    </select>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Invoices</th>
+                            <th scope="col">Cashier</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td scope="row">#10928</td>
+                            <td>Cashier 1</td>
+                            <td>06 Oct 2019</td>
+                            <td>Ice Tea, Salad With peanut sauce</td>
+                            <td>Rp. 120.000</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <script>
+        var data = {
+            labels: ["", "", "", "", "", "", ""],
+            datasets: [{
+                backgroundColor: "rgba(41, 223, 255, 0.2)",
+                borderColor: "rgba(41, 223, 255, 0.5)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(41, 223, 255, 0.8)",
+                hoverBorderColor: "rgba(41, 223, 255, 1)",
+                data: [33000, 44000, 60000, 45000, 43000, 23000, 45000],
+                label: "This Month"
+            },
+            {
+                label: "Last Month",
+                backgroundColor: "rgba(255, 143, 178, 0.2)",
+                borderColor: "rgba(255, 143, 178, 0.5)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(255, 143, 178, 0.8)",
+                hoverBorderColor: "rgba(255, 143, 178, 1)",
+                data: [65000, 59000, 22000, 81000, 50000, 34000, 67000],
+            }
+            ]
+        };
+
+        var option = {
+            responsive: false,
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(255,99,132,0.1)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                        color: "rgba(41, 223, 255, 0)"
+                    }
+                }]
+            }
+        };
+
+        Chart.Line('chart_0', {
+            options: option,
+            data: data
+        });
+        function cancel() {
+            document.getElementById("addmenu-box").style.display = "none";
+            document.getElementById("container").classList.remove("hide");
+        }
+        function add(){
+            document.getElementById("addmenu-box").style.display = "grid";
+            document.getElementById("container").classList.add("hide");
+        }
+    </script>
+</body>
+
+</html>

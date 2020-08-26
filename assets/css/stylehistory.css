@@ -1,0 +1,649 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+.none{
+  display: none;
+}
+body {
+  background-color: #fff;
+  font-family: "Airbnb Cereal App Medium";
+  font-style: medium;
+}
+
+/* Header */
+.container-grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-areas:
+    "header"
+    "main-page";
+  position: relative;
+  /* height: 120% */
+}
+div.hide::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0, 0, 0, 0.4);
+}
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  height: 90px;
+  grid-template-areas: "menu brand-title";
+  background-color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.menubtn {
+  height: 60px;
+  width: 60px;
+  grid-area: menu;
+  justify-content: center;
+  display: flex;
+  place-self: center;
+}
+.brand-title {
+  font-size: 30px;
+  font-family: "Airbnb Cereal App Medium";
+  grid-area: brand-title;
+  display: flex;
+  place-self: center;
+}
+
+/* End Header */
+/* Start of Main Page */
+
+.main-page {
+  display: grid;
+  grid-area: main-page;
+  grid-template-areas: "leftbar history";
+  grid-template-columns: 1fr 12fr;
+  background-color: rgba(190, 195, 202, 0.3);
+}
+
+.main-page div.leftbar {
+  z-index: 1;
+  display: grid;
+  grid-area: leftbar;
+  grid-template-columns: 80px;
+  height: 100%;
+  grid-template-rows: 100px 100px 100px;
+  grid-gap: 1px;
+  background-color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.leftbar a {
+  width: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+}
+/* End of Main Page */
+/* Add Item Box */
+
+div.addmenu-box {
+  display: none;
+  grid-template-rows: 6fr 1fr;
+  z-index: 3;
+  height: 80%;
+  width: 60%;
+  max-height: 100%;
+  background-color: #fff;
+  position: fixed;
+  justify-self: center;
+  align-self: center;
+  border-radius: 10px;
+  right: 0;
+  left:0;
+  top: 10%;
+  margin: auto;
+}
+
+div.detail-add {
+  background-color: #fff;
+  border-radius:10px 10px 0px 0px ;
+  display: flex;
+  flex-direction: column;
+}
+
+div.detail-add h2{
+  flex:1;
+  margin: 30px 30px 30px 30px;
+  background-color: #fff;
+
+}
+
+div.detail-add div.addform-box{
+  flex: 5;
+  margin: 0px 30px 30px 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.addform-box div{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-bottom: 10px;
+}
+.addform-box div label{
+  font-size: 30px;
+}
+
+.addform-box div input, .addform-box div select{
+  font-size: 20px;
+  background: #FFFFFF;
+  border: 1px solid #CECECE;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.addform-box div input#price{
+  width: 70%;
+}
+select:required {
+  color: #cecece;
+  width: 50%;
+}
+select option{
+  color: black;
+}
+
+
+div.addbtn-area{
+  background-color: #fff;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin:0px 30px 30px 30px;
+}
+
+div.addbtn-area a{
+  display: flex;
+  width: 180px;
+  height: 66px;
+  border-radius: 10px;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+div.addbtn-area a:hover{
+  text-decoration: none;
+  opacity: 0.8;
+  transition-duration: 0.5s;
+
+}
+div.addbtn-area a.addbtn{
+  background: #57CAD5;
+  margin-left: 20px;
+}
+div.addbtn-area a.cancelbtn{
+  background: #F24F8A;
+}
+
+/* End of Add items */
+/* CHart Js */
+.history {
+    grid-area: history;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
+  .recap {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    place-self: center;
+  }
+  
+  .recap div.twinbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .twinbox h3 {
+    font-size: 30px;
+  }
+  .twinbox h5 {
+    top: 20%;
+    font-size: 15px;
+  }
+  .twinbox p {
+    vertical-align: top;
+    font-size: 15px;
+  }
+  
+  .twinbox1 {
+    background: linear-gradient(
+      278.29deg,
+      #fbb2b4 30.05%,
+      rgba(255, 143, 178, 0) 133.19%
+    );
+    filter: drop-shadow(10px 15px 10px rgba(255, 143, 178, 0.25));
+    border-radius: 10px;
+  }
+  
+  .twinbox2 {
+    background: linear-gradient(
+      278.29deg,
+      #29dfff 30.05%,
+      rgba(41, 223, 255, 0) 133.19%
+    );
+    filter: drop-shadow(10px 15px 10px rgba(41, 223, 255, 0.25));
+    border-radius: 10px;
+  }
+  .twinbox3 {
+    background: linear-gradient(
+      278.29deg,
+      #ab84c8 30.05%,
+      rgba(241, 201, 236, 0) 133.19%
+    );
+    filter: drop-shadow(10px 15px 10px rgba(241, 201, 236, 0.25));
+    border-radius: 10px;
+  }
+  .chart-line {
+    background-color: white;
+    height: 100%;
+    width: 90%;
+    display: grid;
+    grid-template-areas:
+      "revenue month"
+      "canvas canvas";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* margin: 30px 0px 30px 30px; */
+    place-self: center;
+  }
+  
+  .chart-line h3 {
+    margin: 20px 0px 0px 20px;
+    display: flex;
+    font-size: 30px;
+    grid-area: revenue;
+    align-self: end;
+  }
+  .chart-line select#month:required {
+    width: 20%;
+    height: 50%;
+    grid-area: month;
+    margin: 20px 20px 0px 0px;
+    display: flex;
+    place-self: end;
+    border-radius: 15px;
+    background-color: #cecece;
+    border: 0px;
+    color: black;
+  }
+  
+  canvas {
+    grid-area: canvas;
+    background: #ffffff;
+    border-radius: 10px;
+    max-height: 500px;
+    width: 100%;
+    overflow: scroll;
+  }
+  
+  .recordertable {
+    background-color: white;
+    height: 100%;
+    width: 90%;
+    display: grid;
+    grid-template-areas:
+      "recent today"
+      "table table";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    /* margin: 30px 0px 30px 30px; */
+    place-self: center;
+    margin-top: 30px;
+  }
+  .recordertable h3 {
+    margin: 20px 0px 0px 20px;
+    display: flex;
+    font-size: 30px;
+    grid-area: recent;
+    align-self: end;
+  }
+  
+  .recordertable select#today:required {
+    width: 20%;
+    height: 50%;
+    grid-area: today;
+    margin: 20px 20px 0px 0px;
+    display: flex;
+    place-self: end;
+    border-radius: 15px;
+    background-color: #cecece;
+    border: 0px;
+    color: black;
+  }
+  
+  table {
+    grid-area: table;
+    overflow: scroll;
+  }
+  tbody td {
+    color: #cecece;
+  }
+  
+  /*end chart JS */
+/* Media Breakpoints */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .menubtn {
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    display: flex;
+  }
+  .menubtn img {
+    height: 20px;
+    width: 20px;
+    place-self: center;
+  }
+  .header {
+    grid-template-columns: 1fr 9fr 1fr;
+    height: 70px;
+  }
+
+  .main-page div.leftbar {
+    grid-template-columns: auto;
+    height: 100%;
+    grid-template-rows: 60px 60px 60px;
+  }
+
+  .leftbar a {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .leftbar a img {
+    height: 70%;
+    width: 28px;
+    display: flex;
+    align-self: center;
+  }
+
+  .main-page div.cards-area {
+    grid-area: cards-area;
+    height: 100%;
+  }
+
+  .cards-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 165px);
+    gap: 20px;
+    margin: 20px;
+  }
+
+  .card-grid div.body-card h5 {
+    display: flex;
+    justify-content: start;
+    align-self: flex-end;
+    font-family: "Airbnb Cereal App Light";
+    font-size: 12px;
+  }
+  .card-grid div.body-card p {
+    display: flex;
+    justify-content: start;
+    align-self: center;
+    font-size: 12px;
+    font-family: "Airbnb Cereal App Medium";
+  }
+  .cart-body div img {
+    height: 150px;
+  }
+  .cart-body h2 {
+    font-size: 15px;
+  }
+  .cart-body p {
+    font-size: 12px;
+  }
+}
+/* madia up to 1300px */
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .main-page div.cards-area {
+    grid-area: cards-area;
+    height: 100%;
+  }
+
+  .cards-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, minmax(200px, 230px));
+    grid-template-areas:
+      "card"
+      "card";
+    gap: 20px;
+    margin: 20px;
+  }
+
+  .card-grid div.body-card h5 {
+    display: flex;
+    justify-content: start;
+    align-self: flex-end;
+    font-family: "Airbnb Cereal App Light";
+    font-size: 18px;
+  }
+  .card-grid div.body-card p {
+    display: flex;
+    justify-content: start;
+    align-self: center;
+    font-size: 18px;
+    font-family: "Airbnb Cereal App Medium";
+  }
+  .cart-body h2 {
+    font-size: 20px;
+  }
+  .cart-body p {
+    font-size: 15px;
+  }
+}
+
+@media and(max-width: 768px) {
+  #cart-b,
+  #cart-h {
+    display: none;
+  }
+  div.addmenu-box {
+    height: 50%;
+    max-height: 80%;
+}
+
+
+.addform-box div label{
+    font-size: 20px;
+}
+.addform-box div input, .addform-box div select{
+    font-size: 15px;
+}
+
+
+div.addbtn-area{
+    background-color: #fff;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin:0px 30px 30px 30px;
+}
+
+div.addbtn-area a{
+    display: flex;
+    width: 180px;
+    height: 66px;
+    border-radius: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+div.addbtn-area a:hover{
+    text-decoration: none;
+    opacity: 0.8;
+    transition-duration: 0.5s;
+
+}
+div.addbtn-area a.addbtn{
+    background: #57CAD5;
+    margin-left: 20px;
+}
+div.addbtn-area a.cancelbtn{
+    background: #F24F8A;
+}
+
+}
+
+@media(max-width: 425px){
+    .recap {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px;
+        place-self: center;
+      }
+      .header{
+          height:50px;
+          grid-template-columns: 1fr;
+          grid-template-areas: 'brand-title';
+          position: relative;
+      }
+      .menubtn {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        align-self: center;
+        justify-self: start;
+        margin-left: 10px;
+      }
+      .menubtn img{
+          height: 80%;
+          width: 80%;
+      }
+      .brand-title{
+          font-size: 20px;
+      }
+      .main-page {
+        display: grid;
+        grid-template-areas: 
+        "leftbar"
+        "history";
+        grid-template-rows: 1fr auto;
+        grid-template-columns: auto;
+      }
+
+      .main-page div.leftbar {
+        z-index: 1;
+        display: grid;
+        grid-area: leftbar;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 100%;
+        grid-template-rows: 50px;
+        grid-gap: 1px;
+        background-color: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      .leftbar a img {
+        height: 100%;
+        width: 28px;
+        display: flex;
+        align-self: center;
+      }
+      .leftbar a {
+        height: 50px;
+        display: flex;
+        justify-self: center;
+      }
+      .chart-line h3 {
+        font-size: 20px;
+      }
+      .chart-line select#month:required {
+        width: 50%;
+        height: 50%;
+        font-size: 15px;
+      }
+      .recordertable h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+
+      }
+      
+      .recordertable select#today:required {
+        width: 50%;
+        height: 50%;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      
+      table {
+        grid-area: table;
+        font-size: 8px;
+      }
+      tbody td {
+        color: #cecece;
+      }
+      div.addmenu-box {
+        height: 60%;
+        max-height: 80%;
+        width: 90%;
+    }
+    div.addform-box div{
+        width: max-content;
+    }
+    div.detail-add h2{
+        font-size: 25px;
+    }
+    .addform-box div label{
+        font-size: 15px;
+    }
+    .addform-box div input, .addform-box div select{
+        font-size: 12px;
+        margin-left: 40px;
+        border-radius: 5px;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.4);
+    }
+    
+    
+    div.addbtn-area{
+        background-color: #fff;
+        border-radius: 0px 0px 10px 10px;
+        display: flex;
+        justify-content: center;
+        margin:0px 30px 30px 30px;
+    }
+    
+    div.addbtn-area a{
+        width: 80px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+}
+
